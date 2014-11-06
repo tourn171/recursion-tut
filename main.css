@@ -1,0 +1,123 @@
+html,
+body{
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    background: #000;
+}
+
+header{
+    padding: 25px;
+    height: 100px;
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px inset black;
+    background: #FF7878;
+}
+
+header h1{
+    padding: 0;
+    margin: 0;
+}
+
+h2{
+    margin-bottom: 90px;
+    padding: 20px;
+    width: 100%;
+    background: rgba(100,100,100, 0.5);
+}
+
+.container-fluid{
+    margin-top: 80px;
+    width: 80%;
+    height: 100%;
+    background: #FFFFFF;
+}
+
+.answer{
+    text-align: center;
+    width: 100%;
+    height: 40px;
+    background: rgba(0,0,0,0.4);
+    border: 1px inset rgba(0,0,0,0.5);
+    margin-bottom: 65px;
+}
+
+.beginning{
+    line-height: 20px;
+    font-size: 18px;
+    width: 100%;
+    margin-top: 50px;
+}
+
+.inception{
+   margin-top: 50px;
+   width: 100%;
+   height: 400px;
+   background: url("images/inception.jpg") no-repeat;     /* Property of fanpop.com */    
+   background-size: contain;
+   background-position: center;
+}
+
+.example{
+    line-height: 20px;
+    font-size: 18px;
+    width: 100%;
+    margin-top: 50px;
+}
+
+.panel{
+    margin-top: 50px;
+}
+
+
+.hideme{
+    display: none;
+    width: 100%;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-width: 0px 1px 1px 1px;
+}
+
+.answer h5{
+    font-size: 20px;
+}
+
+.flow-box{
+    margin-top: 40px;
+    width: 100%;
+}
+
+.flow{
+    text-align: center;
+    background: #89E894;
+    width: 400px;
+    margin: 10px auto;
+    padding: 5px;
+}
+
+.arrow{
+    height: 10px;
+    width: 0;
+    border-left: 3px solid black;
+    margin: 0 auto;
+}
+
+.spacer{
+    height: 300px;      
+}
+
+footer{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 30px;
+    background: black;
+    text-align: center;
+    color: white;
+    margin-top: 30px;
+}
