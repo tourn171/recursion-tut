@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Recursion Tutorial</title>
+        <link rel="stylesheet" href="main.css" type="text/css" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+        <style>
+        li.L0, li.L1, li.L2, li.L3,
+        li.L5, li.L6, li.L7, li.L8
+        { list-style-type: decimal !important }
+        </style>
+    </head>
+    <body>
+        <header class = "center-block"><h1>Recursion for the common man</h1></header>
+        <div class = 'container-fluid'> 
+        <h2 class="well">In the beginning</h2>
+            <div class="inception"></div>
+            <div class="beginning">
+            <p>Recursion, a subject that is a little mind boggling for some. It was certainly that way for me when I first learned of it. Once you get a certain understanding of the idea it is actually a pretty simple concept. Today we will be going through building a recursive function. How it is structured and why it works the way that it does. We will be using javascript to build our functions. This language has several different places it can be run including in the average browser. Also there are several extremely easy places to build a javascript function.</p> 
+            <ul class="well"><h3>Sites you can use to work on javascript:</h3>
+                <li><a href="http://labs.codecademy.com/">Codecademy Labs</a></li>
+                <li><a href="http://www.compileonline.com/try_javascript_online.php">Compile Online</a></li>
+                <li><a href="http://js.do/">JS.DO</a></li>
+                <li><a href="http://repl.it/languages/JavaScript">repl.it</a></li>
+                <li><a href="http://jsbin.com/?html,js,output">JS Bin</a></li>
+                <li><a href="http://jsfiddle.net/">JS Fiddle</a></li>
+                <li><a href="http://rendera.herokuapp.com/">Rendera</a></li>
+            </ul>
+            <p>As this small sampling shows there are a welth of resources for working on javascript online and javascript has plenty of simliarities to C type languages. For these reasons we will be working with javascript</p></p>
+            <p>First things first however we are going to talk about the concept of layers. Like an onion or the movie inception. Recursion works in layers. The thought is nearly akin to that of a function within a function within a function. Now at first glance that is a bit of a big thing and is a little counter intuitive to human understading. The dream within a dream idea has been in movies and tv for years i think because it is such a foriegn concept to us. </p>
+            <p>So imagine if you will. Let's say your in the dream within a dream. You are Leonardo Di Caprio and your going into this persons dream to retrieve information. The information is to nuclear launch codes and each digit of the code is in a seperate dream. Going deeper and deeper into the dream to pull out the last numbers. So you arrive in the first dream find the first digit. Then go into the next dream get the second digit, and so on and so forth. Finally your in the last dream and you find that final digit. Now you have to bring that information back to the real world going through all the dreams before till you wake up. Recursion works like that.</p>
+             <p>Now let's look at an example of a recursive function. I will walk through how to build one in this first attempt. Open your favorite text editor and follow along if you would like. Keep in mind the layers as we do.</p>
+            </div>
+            <div class="panel panel-default">
+            <div class="panel-heading"><h3>Hands on | Addme</h3></div>
+            <div class="panel-body example">
+                <p>So when ever we make a recursive function the first thing that we need to do and probably the most important part of a recursive function is it's base case. What is that you may be asking. A base case is like the off switch for the function. Without it the function would continue to run and eventually cause a Stack Overflow error. The base case is how we make sure that we don't make an infinite loop in our recursive function</p>
+                <p>So let's build one</p>
+                <h4 class="well">Example 1</h4>
+                <p>In our first example we will be building a function that adds all the numbers from 0 to n</p>
+                <p>So what is our base case for this?</p>
+                <div class="answer"><h5>Answer</h5>
+                <div class="hideme"><p>0 is our base case. If n = 0 there is no need to do anything because 0+ anything is itself. **note this also works with base case of 1 as it is the last number that you can actually add to the recursive function</p></div>
+                </div>
+                <p>So now we know our base case. Yes I know how simple this example is don't worry we will build on the concept.</p>
+                <p>So lets start to build our code</p>
+                <pre class="prettyprint linenums">var addme = function(n){
+    if(n = 0){
+        return 0;
+    }
+}
+                </pre>
+                <p>So here we have our recursive function. We have our base case set. The next thing that we need to do is to add a callback to the same function. The diffence this time is that we will be changing our input to the function </p>
+                <pre class="prettyprint linenums">var addme = function(n){
+    if(n = 0){
+        return 0;
+    }
+    else {
+        sum = n;
+        return sum + addme(n - 1);
+    }
+}
+
+console.log(addme(10));
+                </pre>
+                <p>This is a fully workable recursive function. To be honest it isn't likely something you might do in real code but it does work as a basic example.</p>
+                <p>So what is actually happening here</p>
+                <div class="flow-box">
+                <div class="flow"><p>First add me call</p><p>Sets sum to 10 then</p><p> Returns 10 + addme(9) or (45 + 10 = 55)</p></div>
+                <div class="arrow"></div>
+                <div class="flow"><p>Second add me call</p><p>Sets sum to 9 then</p><p> Returns 9 + addme(8) or (9 + 36 = 45)</p></div>
+                <div class="arrow"></div>
+                <div class="flow"><p>Third add me call</p><p>Sets sum to 8 then</p><p> Returns 8 + addme(7) or (8 + 28 = 36) </p></div>
+                <div class="arrow"></div>
+                <div class="flow"><p>Fourth add me call</p><p>Sets sum to 7 then</p><p> Returns 7 + addme(6) or (7 + 21 = 28) </p></div>
+                <div class="arrow"></div>
+                <div class="flow"><p>Fifth add me call</p><p>Sets sum to 6 then</p><p> Returns 6 + addme(5) or (6 + 15 = 21) </p></div>
+                <div class="arrow"></div>
+                <div class="flow"><p>Sixth add me call</p><p>Sets sum to 5 then</p><p> Returns 5 + addme(4) or (5 + 10 = 15) </p></div>
+                <div class="arrow"></div>
+                <div class="flow"><p>Seventh add me call</p><p>Sets sum to 4 then</p><p> Returns 4 + addme(3) or (4 + 6 = 10) </p></div>
+                <div class="arrow"></div>
+                <div class="flow"><p>Eighth add me call</p><p>Sets sum to 3 then</p><p> Returns 3 + addme(2) or (3 + 3 = 6)</p></div>
+                <div class="arrow"></div>
+                <div class="flow"><p>Ninth add me call</p><p>Sets sum to 2 then</p><p> Returns 2 + addme(1) or (2 + 1 = 3)</p></div>
+                <div class="arrow"></div>
+                <div class="flow"><p>Tenth add me call</p><p>Sets sum to 1 then</p><p>Returns 1 + addme(0) or (0 + 1 = 1)</p></div>
+                <div class="arrow"></div>
+                <div class="flow"><p>Eleventh add me call</p><p>Returns 0</p></div>
+                </div>
+                <div>
+                    <p>So by looking at this you can see first it goes all the way down the rabbit hole and then back up it just to be able to answer the initial question of 10 + the next number</p>
+                </div>
+
+            </div>
+            </div>
+        <h2 class="well">Chapter 2</h2>
+        <div class = "beginning">
+            <p>So now that you have seen a recursive function in action your probably going so what I can do the same thing with a loop. Well your right you could but one most of the time recursive functions are more effecient and have far less code in them than a looped function (barring this obivious example I just used)</p>
+            <p>Any algorithm that has a basic terminating condition however can be made recursivly</p>
+            <p>There are a variety of data types and abstract ideas that you can use recursive thinking on. For an RPG player out there you might recognize the thought process thusly</p>
+            <ul><h3>To get the magic sword</h3>
+            <li><p>To get the magic sword the blacksmith needs mythril</p></li>
+            <li><p>To get the mythril the elves will trade it for a dragon scale</p></li>
+            <li><p>To get the dragon scale the hunter will trade it for a cooked fish</p></li>
+            <li><p>To get the cooked fish the chef just needs you to get him a fresh fish but he is nice and will do it for free</p></li>
+            <li><p>To get the fresh fish the fisherman wants a date with Mary</p></li>
+            <li><p>Mary will go out on a date with the fisherman if you give her a ruby ring</p></li>
+            <li><p>The ruby ring is a quest item at the end of the local dungeon</p></li>
+            </ul>
+            <p>The idea is taking smaller problems and building them up to solve larger and larger problems. In our RPG refrence our large problem was that getting the magic sword requires mythril a dragons scale a fish a date and a ruby ring. We then break the problem down into it's simplest parts and solve those to solve the larger problem.</p>
+            <p>In our add me function we took the large problem of what is the sum of all the numbers between 0 and n. When we break it down it is lets add one number after another. In it's simpliest form it is 0 + 1 then the next largest problem is the first problem + 2 then the next largest problem is the second problem + 3 and so on and so forth.</p>
+            <div class="panel panel-default">
+            <div class="panel-heading"><h3>Hands on | Array itteration</h3></div>
+            <div class="panel-body example">
+            <p>Our next function will be adding up the sum of an array. Our array will consist of 5 numbers. Let's build our array</p>
+            <pre class="prettyprint linenums">var myArray = [11,10,25,47,8];
+            </pre>
+            <p>Next we will create our function rec_array it will take in two arguments the array and the length of the array.</p>
+            <pre class="prettyprint linenums">var myArray = [11,10,25,47,8];
+
+var rec_array = function(array, array_size){
+    //Our base case
+    if(array_size <= 0){
+        return array[0];
+    }
+    else{
+        sum = array[array_size];
+        return sum + rec_array(array, array_size-1);
+    }
+}
+
+console.log(rec_array(myArray, 4);
+                
+            </pre>
+            <p>What we have done here is iterate over the array from the end to the begining. We look and check to see what the array length is if it is 0 that means it has gone through and looked at all the others and we just need to add index 0 to our total. Otherwise we need to go through each of the indexes starting with the last one and add it to our total. Now you may notice a problem with this. If an empty array has been given as an argument there will be an error. Not to worry because a simple if statement added into our base case to check if array[0] is typeof 'undefined' would resolve that issue. Alternatively the other option is to make sure that the recursive function dosn't recieve an empty array with a wrapper.</p>
+            <p>That is exactly what we will be doing next by creating a recursive function that checks if a word is a palindrome. We will use a wrapper to take in our inputs and do our checks for us and use the recursive function to reverse our given word</p>
+            <pre class="prettyprint linenums">var reverseme = function(word, word_len){
+//base case
+if(word_len <= 0){
+    return word[0];
+}
+else{
+    reversed = word[word_len];
+    return reversed + reverseme(word, word_len-1);
+}
+}                
+            </pre>
+            <p>Now that we have our recursive function built lets create the wrapper</p>
+            <pre class = "prettyprint linenums">var reverseme = function(word, word_len){
+//base case
+if(word_len <= 0){
+    return word[0];
+}
+else{
+    reversed = word[word_len];
+    return reversed + reverseme(word, word_len-1);
+}
+};
+
+var ispalindrom = function(word, reversed_word){
+    // first we will check to make sure the word isn't an empty string
+    if(word.length > 0){
+        // then we will check to see if it isn't a one letter word or that the words arn't the same
+        // *side not this can also be added as an additional base case in your recursive function
+        if(word.length < 2){
+            if(word == reversed_word){
+                return true;
+            }
+        }
+        else if(word == reversed_word){
+            return true; //I'll be honest I'm debating on that one
+        }
+        else{
+            if(reversed_word == reverseme(word, word.length-1)){ // don't forget to take one off the length since we are working with 0 indexed arrays
+                return true;
+            }
+            return false;
+        }
+    }
+    return false;
+}
+            </pre>
+        </div>
+        </div>
+        <h2 class="well">The Final Frontier</h2>
+        <div class="beginning">
+            <p>Now you may be asking yourself how does any of this help in real life programming. Everything that you have shown me is easily done with other tools given to my by my language. Well honestly your right, just keep in mind any problem that you have that you can break down into other problems you can use recursion. It is usefull in going through data structures like directories and nodes for web crawlers even a merge sort is a recursive function. There are times where it is usefull. In most modern languages however, the language itself is effecient enought that a loop will sufice. Knowing recursion wont really make you a success but it will give you another loop in your belt.</p>
+        <ul class = "Well"><h2>Some other places for information on recursion</h2>
+            <li><a href="http://en.wikipedia.org/wiki/Recursion_(computer_science)">Wikipedia</a>(yeah i hate citing wikipedia anywhere but it's not a bad read)</li>
+            <li><a href="http://stackoverflow.com/questions/13646526/what-is-recursion">Stack Overflow | What is recursion</a></li>
+            <li><a href="http://www.python-course.eu/recursive_functions.php">Here is a python explination using fibbinaci numbers</a></li>            
+        </ul>
+        </div>
+        <div class="spacer"></div>
+            <footer> All images are copyright to their respective owners. </footer>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> 
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+        <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js?skin=sunburst"></script>    
+        <script type="text/javascript" src="main.js"></script>
+    </body>
+</html>
